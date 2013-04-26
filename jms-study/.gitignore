@@ -1,0 +1,17 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#eclipse Files #
+.classpath
+.project
+.settings
+
+#maven Files #
+target
+
+#log Files #
+*.log

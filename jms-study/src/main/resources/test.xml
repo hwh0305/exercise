@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<test xmlns="hao" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="hao test.xsd">
+	<x />
+	<y />
+</test>
