@@ -6,7 +6,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>zk experiment</name>
+	<name>zookeeper experiment</name>
 
 	<dependencies>
 		<dependency>
