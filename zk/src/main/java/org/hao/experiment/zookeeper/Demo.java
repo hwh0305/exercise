@@ -3,17 +3,12 @@ package org.hao.experiment.zookeeper;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
-import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
-import org.apache.zookeeper.server.quorum.QuorumPeerConfig.ConfigException;
-import org.apache.zookeeper.server.quorum.QuorumPeerMain;
 
 public class Demo {
 
@@ -21,7 +16,9 @@ public class Demo {
 
     public Demo() {
         try {
-            zk = new ZooKeeper("localhost:2181,localhost:2182,localhost:2183,localhost:2184/test", 500, null);
+            zk = new ZooKeeper(
+                               "10.16.42.77:2181,10.16.42.77:2182,10.16.42.77:2183,10.16.42.77:2184,10.16.42.59:2181/hao/experiment",
+                               500, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,7 +88,7 @@ public class Demo {
         d.showChildren("/");
         d.createChildren("/" + InetAddress.getLocalHost().getHostAddress(), new byte[0]);
         d.showChildren("/");
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         d.close();
     }
 
