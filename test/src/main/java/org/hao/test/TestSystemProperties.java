@@ -16,9 +16,9 @@ public class TestSystemProperties {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    static void main(String[] args) throws Exception {
         if (properties.getProperty("aaa") != null) System.out.println(properties.getProperty("aaa"));
         if (properties.getProperty("bbb") != null) System.out.println(properties.getProperty("bbb"));
-
     }
+
 }

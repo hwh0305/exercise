@@ -6,16 +6,18 @@ import org.hao.test.Retry.Task;
 
 public class RetryFramework {
 
-    public static Retry getInstance() {
-        return new RetryImpl();
+    public static <T> Retry<T> getInstance() {
+        return new RetryImpl<T>();
     }
 
     public static void main(String[] args) {
-        Retry retry = RetryFramework.getInstance();
-        retry.process(10, new Task() {
+        Retry<Boolean> retry = RetryFramework.getInstance();
+        retry.process(10, new Task<Boolean>() {
+
+            private final boolean isStop = false;
 
             @Override
-            public boolean execute(int times, Object... params) {
+            public Boolean execute(int times, Object... params) {
                 System.out.println("run");
                 if (times == 5) return true;
                 sleep(times);
@@ -27,6 +29,11 @@ public class RetryFramework {
                     TimeUnit.MILLISECONDS.sleep(ms);
                 } catch (InterruptedException e) {
                 }
+            }
+
+            @Override
+            public boolean isStop() {
+                return isStop;
             }
         });
 

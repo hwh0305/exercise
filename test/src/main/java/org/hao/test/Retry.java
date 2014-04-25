@@ -1,12 +1,14 @@
 package org.hao.test;
 
-public interface Retry {
+public interface Retry<T> {
 
-    boolean process(int counts, Task task, Object... params);
+    T process(int counts, Task<T> task, Object... params);
 
-    interface Task {
+    interface Task<E> {
 
-        boolean execute(int times, Object... params);
+        E execute(int times, Object... params);
+
+        boolean isStop();
 
     }
 
