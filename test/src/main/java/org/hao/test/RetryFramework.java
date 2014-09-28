@@ -1,8 +1,8 @@
 package org.hao.test;
 
-import java.util.concurrent.TimeUnit;
-
 import org.hao.test.Retry.Task;
+
+import java.util.concurrent.TimeUnit;
 
 public class RetryFramework {
 
@@ -19,15 +19,16 @@ public class RetryFramework {
             @Override
             public Boolean execute(int times, Object... params) {
                 System.out.println("run");
-                if (times == 5) return true;
+                if (times == 5) return Boolean.TRUE;
                 sleep(times);
-                return false;
+                return Boolean.FALSE;
             }
 
             private void sleep(int ms) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(ms);
                 } catch (InterruptedException e) {
+                    System.err.println(e.getStackTrace());
                 }
             }
 
